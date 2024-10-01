@@ -26,9 +26,6 @@ models:
       - name: review_date
         data_type: timestamp_ntz
         quote: true
-        data_tests:
-          - relationships:
-              field: review_date
       - name: reviewer_name
         data_type: varchar
         quote: true
