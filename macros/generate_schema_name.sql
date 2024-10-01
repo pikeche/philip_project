@@ -5,7 +5,7 @@
 
         {{ default_schema }}
 
-    {%- elif env_var('DBT_MY_ENV','') == 'dev' -%}
+    {%- elif env_var('DBT_MY_ENV','') in ['sand', 'dev'] -%}
 
        {{ custom_schema_name | trim }}
 
