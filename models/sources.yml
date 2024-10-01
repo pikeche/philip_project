@@ -6,6 +6,14 @@ sources:
     tables:
       - name: listings
         identifier: raw_listings
+        freshness:
+          warn_after: 
+            count: 25
+            period: day
+          error_after: 
+            count: 30 
+            period: day
+        loaded_at_field: UPDATED_AT                 
         columns:
           - name: room_type
             tests:
@@ -20,7 +28,4 @@ sources:
 
       - name: reviews
         identifier: raw_reviews
-        loaded_at_field: date
-        freshness:
-          warn_after: {count: 1, period: hour}
-          error_after: {count: 24, period: hour}
+        freshness: null
