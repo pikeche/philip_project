@@ -1,0 +1,46 @@
+version: 2
+models:
+  - name: fullmoon_reviews
+    description: The 'mart_fullmoon_reviews' model is a transformation of the
+      'fct_reviews' table from the 'AIRBNB' schema in the 'SANDBOX' database. It
+      includes all columns from the 'fct_reviews' table and adds a new column
+      'is_full_moon'. This new column is a flag that indicates whether the
+      review was made on a full moon day or not. The determination of a full
+      moon day is based on the 'seed_full_moon_dates' table from the same
+      'AIRBNB' schema. If the review date matches with a full moon date, the
+      'is_full_moon' column is set to 'full moon', otherwise, it is set to 'not
+      full moon'. The columns in this model include 'review_id', 'listing_id',
+      'review_date', 'reviewer_name', 'review_text', 'review_sentiment', and
+      'is_full_moon'.
+    columns:
+      - name: review_id
+        data_type: varchar
+        quote: true
+        description: This is a unique identifier for each review. It is a string type
+          column.
+      - name: listing_id
+        description: The unique identifier for the listing that the review is associated
+          with. This is a numeric value.
+        data_type: number
+        quote: true
+      - name: review_date
+        data_type: timestamp_ntz
+        quote: true
+        data_tests:
+          - relationships:
+              field: review_date
+      - name: reviewer_name
+        data_type: varchar
+        quote: true
+      - name: review_text
+        data_type: varchar
+        quote: true
+      - name: review_sentiment
+        data_type: varchar
+        quote: true
+        description: This column contains the sentiment of the review. It is a string
+          value that represents the overall sentiment expressed in the review
+          text.
+      - name: is_full_moon
+        data_type: varchar
+        quote: true
